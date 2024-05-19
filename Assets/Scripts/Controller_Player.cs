@@ -44,7 +44,7 @@ public class Controller_Player : MonoBehaviour
         if (GameManager.actualPlayer == playerNumber)
         {
             Jump();
-            if (SomethingLeft())
+            if (SomethingLeft()) //Estos métodos de detección aplica también cuando los jugadores tocan a los "targets".
             {
                 canMoveLeft = false;
             }
