@@ -39,7 +39,7 @@ public class Controller_Player : MonoBehaviour
         }
     }
 
-    private void Update()
+    public virtual void Update()
     {
         if (GameManager.actualPlayer == playerNumber)
         {
@@ -157,7 +157,7 @@ public class Controller_Player : MonoBehaviour
 
     }
 
-    private void OnCollisionExit(Collision collision)
+    public virtual void OnCollisionExit(Collision collision)
     {
         if (collision.gameObject.CompareTag("Floor"))
         {

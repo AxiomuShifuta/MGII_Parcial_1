@@ -8,6 +8,7 @@ TagManager:
   - Water
   - Target
   - Trampoline
+  - Ceiling
   layers:
   - Default
   - TransparentFX
