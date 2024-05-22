@@ -24,6 +24,8 @@ public class Controller_Player : MonoBehaviour
     private bool canMoveLeft, canMoveRight,canJump;
     internal bool onFloor;
 
+    
+
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -44,7 +46,7 @@ public class Controller_Player : MonoBehaviour
         if (GameManager.actualPlayer == playerNumber)
         {
             Jump();
-            if (SomethingLeft()) //Estos métodos de detección aplica también cuando los jugadores tocan a los "targets".
+            if (SomethingLeft()) 
             {
                 canMoveLeft = false;
             }
@@ -91,8 +93,6 @@ public class Controller_Player : MonoBehaviour
     }
 
 
-
-
     public virtual bool IsOnSomething()
     {
         return Physics.BoxCast(transform.position, new Vector3(transform.localScale.x * 0.9f, transform.localScale.y/3,transform.localScale.z*0.9f), Vector3.down, out downHit, Quaternion.identity, downDistanceRay);
@@ -114,18 +114,21 @@ public class Controller_Player : MonoBehaviour
 
     private void Movement()
     {
-        if (Input.GetKey(KeyCode.A) && canMoveLeft)
-        {
-                rb.velocity = new Vector3(1 * -speed , rb.velocity.y, 0);
-        }
-        else if (Input.GetKey(KeyCode.D) && canMoveRight)
-        {
+      
+            if (Input.GetKey(KeyCode.A) && canMoveLeft)
+            {
+                rb.velocity = new Vector3(1 * -speed, rb.velocity.y, 0);
+            }
+            else if (Input.GetKey(KeyCode.D) && canMoveRight)
+            {
                 rb.velocity = new Vector3(1 * speed, rb.velocity.y, 0);
-        }
-        else
-        {
-            rb.velocity = new Vector3(0, rb.velocity.y, 0);
-        }
+            }
+            else
+            {
+                rb.velocity = new Vector3(0, rb.velocity.y, 0);
+            }
+        
+        
         //if (!canMoveLeft)
         //    rb.velocity = new Vector3(0, rb.velocity.y, 0);
         //if (!canMoveRight)
@@ -134,13 +137,13 @@ public class Controller_Player : MonoBehaviour
 
     public virtual void Jump()
     {
-        if (Input.GetKeyDown(KeyCode.W))
-        {
-            if (canJump)
+            if (Input.GetKeyDown(KeyCode.W))
             {
-                rb.AddForce(new Vector3(0, jumpForce, 0), ForceMode.Impulse);
-            }
-        }
+                if (canJump)
+                {
+                    rb.AddForce(new Vector3(0, jumpForce, 0), ForceMode.Impulse);
+                }
+            }    
     }
 
     public virtual void OnCollisionEnter(Collision collision)

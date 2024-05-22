@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Controller_GSwapper : Controller_Player
+public class Controller_GSwapper : New_Player_Controller
 {
     [SerializeField]private bool onCeiling;
     [SerializeField]private bool inverseGravity = false;
@@ -23,20 +23,25 @@ public class Controller_GSwapper : Controller_Player
         base.FixedUpdate();
     }
 
-    public override void Jump()
+     
+    public override void JumpTeam2()
     {
-        if (Input.GetKeyDown(KeyCode.W))
+        if (playerNumber == SecondGameManager.actualPlayerTeam2)
         {
-            if (onFloor)
-            {
-                inverseGravity = true;
-                
-            }
 
-            if (onCeiling)
+            if (Input.GetKeyDown(KeyCode.I))
             {
-                inverseGravity = false;
-               
+                if (onFloor)
+                {
+                    inverseGravity = true;
+
+                }
+
+                if (onCeiling)
+                {
+                    inverseGravity = false;
+
+                }
             }
         }
     }

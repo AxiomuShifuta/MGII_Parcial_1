@@ -147,7 +147,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   jumpForce: 12
-  speed: 5
+  speed: 15
   playerNumber: 3
   rb: {fileID: 0}
   floor:

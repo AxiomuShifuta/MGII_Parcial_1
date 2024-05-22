@@ -4,22 +4,20 @@ using UnityEngine;
 
 public class SecondGameManager : MonoBehaviour
 {
-    public class GameManager : MonoBehaviour
-    {
+
         public static bool gameOver = false;
 
+        public static int actualPlayerTeam1 = 0;
+        public static int actualPlayerTeam2 = 2;
 
-        public static int actualPlayer = 0;
 
-        public List<Controller_Target> targets;
-
-        public List<Controller_Player> players;
+        //public List<Controller_Player> players;
 
         void Start()
         {
             Physics.gravity = new Vector3(0, -30, 0);
             gameOver = false;
-            SetConstraits();
+            //SetConstraits();
         }
 
         void Update()
@@ -31,47 +29,50 @@ public class SecondGameManager : MonoBehaviour
 
         private void GetInput()
         {
+            
             if (Input.GetKeyDown(KeyCode.Q))
             {
-                if (actualPlayer <= 0)
+                if (actualPlayerTeam1 == 0)
                 {
-                    actualPlayer = 3;
-                    SetConstraits();
+                    actualPlayerTeam1 = 1;
+                    //SetConstraits();
                 }
                 else
                 {
-                    actualPlayer--;
-                    SetConstraits();
+                    actualPlayerTeam1 = 0;
+                    //SetConstraits();
                 }
             }
-            if (Input.GetKeyDown(KeyCode.E))
+
+            if (Input.GetKeyDown(KeyCode.O))
             {
-                if (actualPlayer >= 3)
+                if (actualPlayerTeam2 == 2)
                 {
-                    actualPlayer = 0;
-                    SetConstraits();
+                    actualPlayerTeam2 = 3;
+                    //SetConstraits();
                 }
                 else
                 {
-                    actualPlayer++;
-                    SetConstraits();
+                    actualPlayerTeam2 = 2;
+                    //SetConstraits();
                 }
             }
+
         }
 
-        private void SetConstraits()
-        {
-            foreach (Controller_Player p in players)
-            {
-                if (p == players[actualPlayer])
-                {
-                    p.rb.constraints = RigidbodyConstraints.FreezePositionZ | RigidbodyConstraints.FreezeRotation;
-                }
-                else
-                {
-                    p.rb.constraints = RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezePositionZ | RigidbodyConstraints.FreezeRotation;
-                }
-            }
-        }
-    }
+        //private void SetConstraits()
+        //{
+        //    foreach (Controller_Player p in players)
+        //    {
+        //        if (p == players[actualPlayer])
+        //        {
+        //            p.rb.constraints = RigidbodyConstraints.FreezePositionZ | RigidbodyConstraints.FreezeRotation;
+        //        }
+        //        else
+        //        {
+        //            p.rb.constraints = RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezePositionZ | RigidbodyConstraints.FreezeRotation;
+        //        }
+        //    }
+        //}
 }
+
