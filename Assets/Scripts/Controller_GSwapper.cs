@@ -14,7 +14,7 @@ public class Controller_GSwapper : New_Player_Controller
     {
         if (inverseGravity == true)
         {
-            rb.AddForce(new Vector3(0, 40, 0), ForceMode.Impulse);
+            rb.AddForce(new Vector3(0, 10, 0), ForceMode.Impulse);
         }
         
         else rb.AddForce(new Vector3(0, -40, 0));

@@ -22,7 +22,7 @@ public class New_Player_Controller : MonoBehaviour
 
     private bool canMoveLeft, canMoveRight, canJump;
     
-    internal bool onFloor;
+    [SerializeField]internal bool onFloor;
 
     public bool isTeam1;
 
@@ -92,7 +92,7 @@ public class New_Player_Controller : MonoBehaviour
     {
         if (playerNumber == SecondGameManager.actualPlayerTeam1)
         {
-            if (Input.GetKeyDown(KeyCode.W) && onFloor)
+            if (Input.GetKeyDown(KeyCode.W) && onFloor )
             {
                 rb.AddForce(new Vector3(0, jumpForce, 0), ForceMode.Impulse);
             }
@@ -116,7 +116,7 @@ public class New_Player_Controller : MonoBehaviour
     public virtual void OnCollisionEnter(Collision collision)
     {
       
-        if (collision.gameObject.CompareTag("Floor"))
+        if (collision.gameObject.CompareTag("Floor") || collision.gameObject.CompareTag("Goal"))
         {
             onFloor = true;
         }
@@ -125,7 +125,7 @@ public class New_Player_Controller : MonoBehaviour
 
     public virtual void OnCollisionExit(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Floor"))
+        if (collision.gameObject.CompareTag("Floor") || collision.gameObject.CompareTag("Goal"))
         {
             onFloor = false;
         }

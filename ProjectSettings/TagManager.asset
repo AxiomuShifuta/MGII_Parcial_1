@@ -9,11 +9,12 @@ TagManager:
   - Target
   - Trampoline
   - Ceiling
+  - Goal
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Goal
   - Water
   - UI
   - 
