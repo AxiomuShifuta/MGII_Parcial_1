@@ -23,7 +23,15 @@ public class Controller_GSwapper : New_Player_Controller
         base.FixedUpdate();
     }
 
-     
+
+    internal override void MovementTeam2()
+    {
+        if (onCeiling == false)
+        {
+            base.MovementTeam2();
+        }
+    }
+
     public override void JumpTeam2()
     {
         if (playerNumber == SecondGameManager.actualPlayerTeam2)

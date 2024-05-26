@@ -8,10 +8,14 @@ public class SecondGameManager : MonoBehaviour
         public static int actualPlayerTeam1 = 0;
         public static int actualPlayerTeam2 = 2;
         public TMP_Text textoGanador; 
+        
         public List<GameObject> pinkGoalsList = new List<GameObject>();
         public List<GameObject> greenGoalsList = new List<GameObject>();
-  
-       
+        
+        public List<New_Player_Controller> Team1 = new List<New_Player_Controller>();
+        public List<New_Player_Controller> Team2 = new List<New_Player_Controller>();
+
+
 
 
     //public List<Controller_Player> players;
@@ -70,7 +74,7 @@ public class SecondGameManager : MonoBehaviour
             if (goal.gameObject == null)
             {
                 pinkGoalsList.Remove(goal);
-                /*Como el gameObject se destruye antes de se eliminado de la lista, 
+                /*Como el gameObject se destruye antes de ser eliminado de la lista, 
                  aparece por consola un error advirtiendo, lógicamente, que podría
                 traer problemas. No ocurre nada, pero debería buscar la manera de 
                 evitar el error.*/

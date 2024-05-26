@@ -8,16 +8,14 @@ public class Ball : MonoBehaviour
     Rigidbody ballRb;
     [SerializeField] private float initialVelocity = 10f;
     [SerializeField] private float velocityMultiplier = 1.1f;
-    public int pinkCounter;
-    public int greenCounter;
+    
 
 
     // Start is called before the first frame update
     void Start()
     {
       ballRb = GetComponent<Rigidbody>();
-      pinkCounter = 0;
-      greenCounter = 0;
+     
       Launch();
     }
 
@@ -50,13 +48,13 @@ public class Ball : MonoBehaviour
         {
             if (collision.gameObject.name.Contains("PinkGoal"))
             {
-                pinkCounter++;
+                
                 Destroy(collision.gameObject);
                 ballRb.velocity = new Vector3(-ballRb.velocity.x, -ballRb.velocity.y, 0) * velocityMultiplier;
             }
             if (collision.gameObject.name.Contains("GreenGoal"))
             {
-                greenCounter++;
+                
                 Destroy(collision.gameObject);
                 ballRb.velocity = new Vector3(-ballRb.velocity.x, -ballRb.velocity.y, 0) * velocityMultiplier;
             }

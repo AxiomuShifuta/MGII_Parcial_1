@@ -23,6 +23,7 @@ public class New_Player_Controller : MonoBehaviour
     private bool canMoveLeft, canMoveRight, canJump;
     
     [SerializeField]internal bool onFloor;
+  
 
     public bool isTeam1;
 
@@ -68,19 +69,20 @@ public class New_Player_Controller : MonoBehaviour
         }
     }
 
-    private void MovementTeam2()
+    internal virtual void MovementTeam2()
     {
         if(!isTeam1 && playerNumber == SecondGameManager.actualPlayerTeam2)
         {
 
-            if (Input.GetKey(KeyCode.J))
-            {
-                rb.velocity = new Vector3(1 * -speed, rb.velocity.y, 0);
-            }
-            else if (Input.GetKey(KeyCode.L))
-            {
-                rb.velocity = new Vector3(1 * speed, rb.velocity.y, 0);
-            }
+                if (Input.GetKey(KeyCode.J))
+                {
+                    rb.velocity = new Vector3(1 * -speed, rb.velocity.y, 0);
+                }
+                else if (Input.GetKey(KeyCode.L))
+                {
+                    rb.velocity = new Vector3(1 * speed, rb.velocity.y, 0);
+                }
+            
             else
             {
                 rb.velocity = new Vector3(0, rb.velocity.y, 0);
@@ -121,6 +123,12 @@ public class New_Player_Controller : MonoBehaviour
             onFloor = true;
         }
 
+
+        if (collision.gameObject.CompareTag("Flame"))
+        {
+            Destroy(this.gameObject);
+        }
+
     }
 
     public virtual void OnCollisionExit(Collision collision)
@@ -129,5 +137,6 @@ public class New_Player_Controller : MonoBehaviour
         {
             onFloor = false;
         }
+
     }
 }
