@@ -48,13 +48,13 @@ public class Ball : MonoBehaviour
         {
             if (collision.gameObject.name.Contains("PinkGoal"))
             {
-                
+
                 Destroy(collision.gameObject);
                 ballRb.velocity = new Vector3(-ballRb.velocity.x, -ballRb.velocity.y, 0) * velocityMultiplier;
             }
             if (collision.gameObject.name.Contains("GreenGoal"))
             {
-                
+
                 Destroy(collision.gameObject);
                 ballRb.velocity = new Vector3(-ballRb.velocity.x, -ballRb.velocity.y, 0) * velocityMultiplier;
             }
